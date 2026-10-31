@@ -1,6 +1,6 @@
 services:
   rtlsdr-ogn:
-    build: rtlsdr-ogn
+    image: ghcr.io/theheckwr/docker-ogn:latest
     container_name: rtlsdr-ogn
     restart: unless-stopped
     privileged: true

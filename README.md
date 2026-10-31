@@ -59,9 +59,9 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 | SDR_868_PPM | 0 | change only if you know your SDR's ppm |
 | SDR_868_BIAS_T_ENABLE | 0 | set to 1 to enable Bias Tee on your SDR, e.g. to power a LNA |
 
-### build
+### build / pull
 - `cd ./docker-ogn`
-- `docker compose up -d --build`
+- `docker compose pull && docker compose up -d`
 ---
 ### apply configuration changes (e.g. station coordinates)
 - `cd ./docker-ogn2readsb`
@@ -88,8 +88,7 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
   - `docker rm <container_name_or_id>` deactivate a stopped container
   - `docker container prune` remove all stopped containers
   - `docker compose down` stop and remove all containers and networks
-  - `docker compose build --no-cache` only build images
-  - `docker compose up -d --build` create images and start containers
+  - `docker compose pull` pull the latest image from GHCR
   - `docker compose up -d ` recreate and start containers
 - docker **image** related commands
   - `docker image ls` list docker images
