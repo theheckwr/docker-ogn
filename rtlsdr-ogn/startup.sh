@@ -1,6 +1,17 @@
 #!/bin/bash
 
+# defaults for the optional ADS-B feed (see the ADSB block in ogn-template.conf)
+export ADSB_AVR="${ADSB_AVR:-}"
+export ADSB_MAX_ALT_FT="${ADSB_MAX_ALT_FT:-18000}"
+
 envsubst < /app/ogn-template.conf > /app/rtlsdr-ogn/Template.conf
+
+# no ADS-B source configured -> drop the block, an empty AVR line is not valid
+if [ -z "${ADSB_AVR}" ]; then
+    awk '/^ADSB:/{skip=1} skip && /^};/{skip=0; next} !skip' \
+        /app/rtlsdr-ogn/Template.conf > /app/rtlsdr-ogn/Template.conf.tmp
+    mv /app/rtlsdr-ogn/Template.conf.tmp /app/rtlsdr-ogn/Template.conf
+fi
 
 /etc/init.d/rtlsdr-ogn start
 

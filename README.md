@@ -58,6 +58,8 @@ Debian-based Linux Operating Systems (64bit Debian 13 Trixie or newer)
 | SDR_868_SERIAL | 868 | enter your OGN SDR serial |
 | SDR_868_PPM | 0 | change only if you know your SDR's ppm |
 | SDR_868_BIAS_T_ENABLE | 0 | set to 1 to enable Bias Tee on your SDR, e.g. to power a LNA |
+| ADSB_AVR | ultrafeeder:30002 | optional: address of a raw/AVR output (e.g. your readsb `--net-ro-port`) to additionally feed your own 1090 MHz ADS-B traffic into OGN - leave empty to keep the ADS-B feed **off** |
+| ADSB_MAX_ALT_FT | 18000 | only used together with `ADSB_AVR`: ADS-B traffic above this altitude [ft] is not shared |
 
 ### build / pull
 - `cd ./docker-ogn`
